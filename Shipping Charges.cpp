@@ -5,16 +5,58 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int miles, per_500;
+    float weight, charge;
+    float rate = 0.0;
+
+    std::cout << "What is the weight of the package? \n";
+    std::cin >> weight;
+    std::cout << "How many miles does the package have to travel? \n";
+    std::cin >> miles;
+
+    if (miles >= 10 && miles <= 3000)
+    {
+        if (weight > 0 && weight <= 2)
+        {
+            rate = 1.1F;
+        }
+        else if (weight > 2 && weight <= 6)
+        {
+            rate = 2.2F;
+        }
+        else if (weight > 6 && weight <= 10)
+        {
+            rate = 3.7F;
+        }
+        else if (weight > 10 && weight <= 20)
+        {
+            rate = 4.8F;
+        }
+        else
+        {
+            std::cout << "Unaccecptable weight value \n";
+            return 0;
+        }
+    }
+    else
+    {
+        std::cout << "We do not ship packages for distances under 10 or over 30 miles \n";
+        return 0;
+    }
+
+    if ((miles % 500) > 0)
+    {
+        per_500 = miles / 500 + 1;
+    }
+    else
+    {
+        per_500 = miles / 500;
+    }
+
+    charge = rate * per_500;
+
+    std::cout << "The cost for shipping the package is " << charge << "\n";
+
+
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
